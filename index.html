@@ -8,11 +8,45 @@
         <title>Weather Dashboard</title>
     </head>
     <body class="bg-secondary">
-        <div class="row">
-            <section class="col">
-            </section>
-            <section class="col">
-            </section>
+        <div class="d-flex vh-100">
+            <div class="col">
+                <div class="card card-body m-4">
+                    <form>
+                        <label for="city" class="form-label">City:</label>
+                        <input id="city" class="form-control mb-3" type="text">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-9 d-flex">
+                <div class="card card-body m-4">
+                    <h1 class="card-title">City</h1>
+                    <h3 class="text-muted card-subtitle">Date</h3>
+                    <p class="card-text">
+                        Temp: <br>
+                        Wind: <br>
+                        Humidity: <br>
+                        UV Index: <br>
+                    </p>
+                    <div class="d-flex">
+                        <div class="card card-body">
+                            <h2>Day 2</h2>
+                        </div>
+                        <div class="card card-body">
+                            <h2>Day 3</h2>
+                        </div>
+                        <div class="card card-body">
+                            <h2>Day 4</h2>
+                        </div>
+                        <div class="card card-body">
+                            <h2>Day 5</h2>
+                        </div>
+                        <div class="card card-body">
+                            <h2>Day 6</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <script src="assets/js/script.js"></script>
     </body>
