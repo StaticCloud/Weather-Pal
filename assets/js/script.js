@@ -2,6 +2,8 @@
 var todayEl = $("#today");
 var weekEl = $("#week");
 
+var form = $("#form");
+
 // api key and url
 var key = "6c824467b18388bbc515d17b0f0e72db";
 
@@ -72,10 +74,19 @@ var getCity = function(city) {
 
     // make the API call and retrieve the coordinates and the city and state to display
     fetch(apiUrl).then(function(response) {
-        response.json().then(function(data) {
-            console.log(data);
-            getWeather(data[0].lat, data[0].lon, (data[0].name + ", " + data[0].state));
-        })
+        if (response.ok) {
+            response.json().then(function(data) {
+                // if there is data to be rendered, get the coordinates and name of that city
+                if (data[0]) {
+                    getWeather(data[0].lat, data[0].lon, (data[0].name + ", " + data[0].state));
+                } else {
+                    // otherwise, alert the user that the city doesn't exist
+                    alert("That city doesn't exist!")
+                    // and set the query to los angeles by default
+                    document.location.replace("./index.html?q=Los Angeles")
+                }
+            })
+        }
     })
 }
 
@@ -97,10 +108,33 @@ var getWeather = function(lat, lon, city) {
     }) 
 }
 
-// placeholder city
-getCity("pullman");
+// get the query, if it exists
+var getQuery = function() {
+    var queryString = document.location.search.split("=")[1];
+
+    if (queryString) {
+        getCity(queryString);
+    } else {
+        // if the query selector is empty, set the city to los angeles
+        getCity("Los Angeles")
+    }
+}
 
 // convert epoch time to human readable text
 var unixConverter = function(epoch) {
     return new Date(epoch * 1000);
 }
+
+// set the query value to the value of the city textbox
+form.submit(function(e) {
+    e.preventDefault();
+    var city = $("#city").val();
+
+    if (city) {
+        document.location.replace("./index.html?q=" + city);
+    } else {
+        alert("Please enter a value inside the text box.");
+    }
+})
+
+getQuery();
