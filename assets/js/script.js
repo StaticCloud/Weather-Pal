@@ -7,6 +7,9 @@ var form = $("#form");
 // api key and url
 var key = "6c824467b18388bbc515d17b0f0e72db";
 
+var cityArray = [];
+var citiesListEl = $("#cities-list");
+
 // display the weather for the day
 var displayTodaysWeather = function(day, city) {
     // get the value of the day in dt and convert it to a human readable date
@@ -70,7 +73,7 @@ var displayWeeklyWeather = function(week) {
 // get the coordinates of the city using direct geomapping
 var getCity = function(city) {
     // only include cities in the US
-    var apiUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + ", US&appid=" + key;
+    var apiUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + key;
 
     // make the API call and retrieve the coordinates and the city and state to display
     fetch(apiUrl).then(function(response) {
@@ -78,7 +81,7 @@ var getCity = function(city) {
             response.json().then(function(data) {
                 // if there is data to be rendered, get the coordinates and name of that city
                 if (data[0]) {
-                    getWeather(data[0].lat, data[0].lon, (data[0].name + ", " + data[0].state));
+                    getWeather(data[0].lat, data[0].lon, data[0].name);
                 } else {
                     // otherwise, alert the user that the city doesn't exist
                     alert("That city doesn't exist!")
@@ -100,7 +103,14 @@ var getWeather = function(lat, lon, city) {
             response.json().then(function(data) {
                 // render the weather for today and the week
                 displayTodaysWeather(data.daily[0], city);
-                displayWeeklyWeather(data.daily)
+                displayWeeklyWeather(data.daily);
+
+                if (cityArray.includes(city)) {
+                    // do absolutely nothing if the city is already in the array
+                } else {
+                    cityArray.unshift(city);
+                    saveCity();
+                }
             })
         } else {
             alert("An error occurred when trying to load weather data.");
@@ -125,6 +135,34 @@ var unixConverter = function(epoch) {
     return new Date(epoch * 1000);
 }
 
+// save our city to localstorage
+var saveCity = function() {
+    localStorage.setItem("cities", JSON.stringify(cityArray));
+}
+
+// load our cities when the page loads
+var loadCity = function() {
+    // retrieve our array from localstorage
+    cityArray = localStorage.getItem("cities");
+    cityArray = JSON.parse(cityArray);
+
+    // create a new array if our array is empty
+    if (cityArray === null) {
+        cityArray = [];
+        return;
+    }
+
+    // create list elements for the cities
+    for (var i = 0; i < cityArray.length; i++) {
+        var listItemEl = $("<a>").text(cityArray[i]).addClass("list-group-item");
+        listItemEl.attr("href", "./index.html?q=" + cityArray[i]);
+        citiesListEl.append(listItemEl);
+    }
+}
+
+loadCity();
+getQuery();
+
 // set the query value to the value of the city textbox
 form.submit(function(e) {
     e.preventDefault();
@@ -136,5 +174,3 @@ form.submit(function(e) {
         alert("Please enter a value inside the text box.");
     }
 })
-
-getQuery();
