@@ -4,27 +4,13 @@ var weekEl = $("#week");
 
 // api key and url
 var key = "6c824467b18388bbc515d17b0f0e72db";
-var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=46.729728&lon=-117.181843&units=imperial&appid=" + key;
-
-// fetch the url then parse the response into human readable data via JSON
-fetch(apiUrl).then(function(response) {
-    if (response.ok) {
-        response.json().then(function(data) {
-            // render the weather for today and the week
-            displayTodaysWeather(data.daily[0]);
-            displayWeeklyWeather(data.daily)
-        })
-    } else {
-        alert("An error occurred when trying to load weather data.");
-    }
-})
 
 // display the weather for the day
-var displayTodaysWeather = function(day) {
+var displayTodaysWeather = function(day, city) {
     // get the value of the day in dt and convert it to a human readable date
     var today = unixConverter(day.dt);
     // create elements for the city and date
-    var city = $("<h1>").text("Placeholder").addClass("card-title");
+    var city = $("<h1>").text(city).addClass("card-title");
 
     // get the weather icon
     var iconUrl = "http://openweathermap.org/img/w/" + day.weather[0].icon + ".png";
@@ -78,6 +64,41 @@ var displayWeeklyWeather = function(week) {
         weekEl.append(weekCard);
     }
 }
+
+// get the coordinates of the city using direct geomapping
+var getCity = function(city) {
+    // only include cities in the US
+    var apiUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + ", US&appid=" + key;
+
+    // make the API call and retrieve the coordinates and the city and state to display
+    fetch(apiUrl).then(function(response) {
+        response.json().then(function(data) {
+            console.log(data);
+            getWeather(data[0].lat, data[0].lon, (data[0].name + ", " + data[0].state));
+        })
+    })
+}
+
+// finally, with our coordinates and city, get the weather and display it
+var getWeather = function(lat, lon, city) {
+    var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + key;
+
+    // fetch the url then parse the response into human readable data via JSON
+    fetch(apiUrl).then(function(response) {
+        if (response.ok) {
+            response.json().then(function(data) {
+                // render the weather for today and the week
+                displayTodaysWeather(data.daily[0], city);
+                displayWeeklyWeather(data.daily)
+            })
+        } else {
+            alert("An error occurred when trying to load weather data.");
+        }
+    }) 
+}
+
+// placeholder city
+getCity("pullman");
 
 // convert epoch time to human readable text
 var unixConverter = function(epoch) {
