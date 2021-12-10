@@ -90,7 +90,7 @@ var displayWeeklyWeather = function(week) {
 // get the coordinates of the city using direct geomapping
 var getCity = function(city) {
     // only include cities in the US
-    var apiUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + key;
+    var apiUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + key;
 
     // make the API call and retrieve the coordinates and the city and state to display
     fetch(apiUrl).then(function(response) {
@@ -173,7 +173,7 @@ var loadCity = function() {
     for (var i = 0; i < cityArray.length; i++) {
         var listItemEl = $("<a>").text(cityArray[i]).addClass("list-group-item");
         listItemEl.attr("href", "./index.html?q=" + cityArray[i]);
-        citiesListEl.append(listItemEl);
+        citiesListEl.append(listItemEl);S
     }
 }
 
