@@ -31,11 +31,27 @@ var displayTodaysWeather = function(day, city) {
     // append our new elements to the todayEl
     todayEl.append(city).append(dateContainer);
 
+    console.log(day);
+
     // then, render the temp, humidity, wind, and uvi
-    var temp = $("<p>").text("Temp: " + day.temp.max + "F").addClass("card-text");
+    // temp is average of morn, evening, and night, since what temp value we include wasn't specified in instructions...
+    var temp = $("<p>").text("Temp: " + ((day.temp.morn + day.temp.eve + day.temp.night)/3).toFixed(2) + "F").addClass("card-text");
     var humidity = $("<p>").text("Humidity: " + day.humidity + "%").addClass("card-text");
     var wind = $("<p>").text("Wind: " + day.wind_speed + "MPH").addClass("card-text");
-    var uv = $("<p>").text("UVI: " + day.uvi).addClass("card-text");
+    var uv = $("<p>").text("UV Index: " + day.uvi).addClass("card-text");
+
+    // change color of uv index text based on uv index
+    if (day.uvi < 3) {
+        uv.addClass("text-success");
+    } else if (day.uvi >= 3) {
+        uv.addClass("text-warning");
+    } else if (day.uvi >= 6) {
+        uv.attr("style","color: #E58634");
+    } else if (day.uvi >= 8) {
+        uv.addClass("text-danger");
+    } else if (day.uvi >= 11) {
+        uv.attr("style", "color: #A934E5")
+    }
 
     // then append it to a separate div, which would be our body, and append it to tge todayEl
     var info = $("<div>").addClass("card-body").append(temp).append(humidity).append(wind).append(uv);
@@ -49,7 +65,7 @@ var displayWeeklyWeather = function(week) {
     for (var i = 1; i < 6; i++) {
         // repeat what we we did in displayTodaysWeather (might refactor later to avoid repetition) but for every day of the week
         var day = unixConverter(week[i].dt);
-        var weekCard = $("<div>").addClass("card col p-2");
+        var weekCard = $("<div>").addClass("card col p-4 bg-dark border-secondary");
 
         // get the weather icon to display with our date
         var iconUrl = "http://openweathermap.org/img/w/" + week[i].weather[0].icon + ".png";
@@ -58,11 +74,12 @@ var displayWeeklyWeather = function(week) {
         var day = $("<h4>").text((day.getMonth() + 1)
                             + "/" + day.getDate()
                             + "/" + day.getFullYear()).addClass("card-title");
-        var dateContainer = $("<div>").css("display", "inline-flex").append(day).append(weatherIcon);
+        var dateContainer = $("<div>").css("display", "inline-flex").addClass("card-header").append(day).append(weatherIcon);
 
-        var temp = $("<p>").text("Temp: " + week[i].temp.max + "F").addClass("card-text");
+        // temp is also average of morn, evening, and night temperature
+        var temp = $("<p>").text("Temp: " + ((week[i].temp.morn + week[i].temp.eve + week[i].temp.night)/3).toFixed(2) + "F").addClass("card-text");
         var humidity = $("<p>").text("Humidity: " + week[i].humidity + "%").addClass("card-text");
-        var wind = $("<p>").text("Wind: " + week[i].wind_speed + "MPH").addClass("card-text");
+        var wind = $("<p>").text("Wind: " + week[i].wind_speed + "MPH").addClass("card-text pb-5");
 
         weekCard.append(dateContainer).append(temp).append(humidity).append(wind);
 
