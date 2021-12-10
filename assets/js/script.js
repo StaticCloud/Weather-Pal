@@ -173,7 +173,7 @@ var loadCity = function() {
     for (var i = 0; i < cityArray.length; i++) {
         var listItemEl = $("<a>").text(cityArray[i]).addClass("list-group-item");
         listItemEl.attr("href", "./index.html?q=" + cityArray[i]);
-        citiesListEl.append(listItemEl);S
+        citiesListEl.append(listItemEl);
     }
 }
 
