@@ -18,7 +18,7 @@ var displayTodaysWeather = function(day, city) {
     var city = $("<h1>").text(city).addClass("card-title");
 
     // get the weather icon
-    var iconUrl = "http://openweathermap.org/img/w/" + day.weather[0].icon + ".png";
+    var iconUrl = "https://openweathermap.org/img/w/" + day.weather[0].icon + ".png";
     // create an image element with that icon
     var weatherIcon = $("<img>").attr("src", iconUrl).attr("height", "40px");
     var date = $("<h3>").html((today.getMonth() + 1)
@@ -68,7 +68,7 @@ var displayWeeklyWeather = function(week) {
         var weekCard = $("<div>").addClass("card col p-4 bg-dark border-secondary");
 
         // get the weather icon to display with our date
-        var iconUrl = "http://openweathermap.org/img/w/" + week[i].weather[0].icon + ".png";
+        var iconUrl = "https://openweathermap.org/img/w/" + week[i].weather[0].icon + ".png";
         var weatherIcon = $("<img>").attr("src", iconUrl).attr("height", "40px");
         
         var day = $("<h4>").text((day.getMonth() + 1)
