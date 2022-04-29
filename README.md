@@ -9,3 +9,9 @@ A weather application that displays information about weather in a certain city,
 ## Links
 
 [Deployed Page](https://staticcloud.github.io/weather-dashboard/)
+
+## Overview
+
+Here's an overview of the app!
+
+![overview](./assets/images/WeatherDashOverview.png)
