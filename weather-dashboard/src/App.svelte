@@ -5,11 +5,21 @@
   const city = "los angeles"
   const geoUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + key;
 
-  async function getWeather() {
+  let validCity;
+
+  async function getCity() {
     const geoRes = await fetch(geoUrl);
     const geoData = await geoRes.json();
 
-    const weatherUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + geoData[0].lat + "&lon=" + geoData[0].lon + "&units=imperial&appid=" + key;
+    return geoData;
+  }
+
+  async function getWeather() {
+    validCity = await getCity();
+
+    console.log(validCity)
+
+    const weatherUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + validCity[0].lat + "&lon=" + validCity[0].lon + "&units=imperial&appid=" + key;
     
     const weatherRes = await fetch(weatherUrl);
     const weatherData = await weatherRes.json();
@@ -21,15 +31,19 @@
 
 </script>
 
-<main>
+<main class="main-wrapper">
   {#await getWeather()}
     <p>...loading</p>
   {:then data}
-    <p>not loading</p>
-    <Dashboard data={data}/>
+    <Dashboard cityName={validCity[0].name} data={data}/>
   {/await}
 </main>
 
 <style>
-
+  .main-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
 </style>
