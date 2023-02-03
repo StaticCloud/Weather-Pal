@@ -35,6 +35,8 @@
         margin: 20px;
         padding: 20px;
         justify-content: space-between;
+        background-color: var(--dark-gray);
+        border-radius: 5px;
     }
 
     .day-card {

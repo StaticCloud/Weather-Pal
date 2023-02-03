@@ -12,7 +12,7 @@
         <circle class="outer" cx="100" cy="100" r="70"></circle>
         <circle class="progress" cx="100" cy="100" r="60" 
                 style="--percent: {finalPercent}; --color: {color};"></circle>
-        <circle class="inner" cx="100" cy="100" r="50"></circle>
+        <circle class="inner" cx="100" cy="100" r="60"></circle>
     </svg>
     <div class="info-wrap">
         <h4>{percent}{units}</h4>
