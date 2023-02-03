@@ -4,18 +4,18 @@
 
 <style>
     .search {
-        padding: 10px;
-        font-size: 1rem;
+        padding: 18px;
+        font-size: 1.5rem;
         width: 100%;
         border: none;
 
-        background-color: var(--search-unselected);
+        background-color: var(--dark-gray);
         transition: all 0.5s;
     }
 
     .search:focus {
         outline: none;
-        color: var(--search-unselected);
+        color: var(--dark-gray);
         background-color: var(--white);
     }
 </style>

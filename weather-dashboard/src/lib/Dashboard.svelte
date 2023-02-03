@@ -17,7 +17,7 @@
 
 <style>
     .dashboard {
-        max-width: 1098px;
+        min-width: 1098px;
     }
 
     .dashboard-wrap {
