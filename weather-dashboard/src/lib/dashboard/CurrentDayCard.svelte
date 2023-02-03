@@ -11,26 +11,37 @@
     const dateTime = unixConverterLong(firstDay.dt)
 </script>
 
-<div class="block-wrapper card">
-    <h1>{cityName}</h1>
-    <p class="date">{dateTime}</p>
-    <img class="day-icon" src={getWeather(firstDay.weather[0].main)} alt={unixConverterLong(firstDay.dt) + " " + firstDay.weather[0].main}>
+<div class="card current-day">
+    <div class="block-wrapper">
+        <img class="day-icon" src={getWeather(firstDay.weather[0].main)} alt={unixConverterLong(firstDay.dt) + " " + firstDay.weather[0].main}>
+        <h1>{cityName}</h1>
+        <p class="date">{dateTime}</p>
+    </div>
 </div>
 
 <style>
+    .current-day {
+        display: flex;
+        flex: 1 0;
+        align-items: center;
+        justify-content: center;
+    }
+
     .date {
         color: var(--light-gray)
     }
 
     .block-wrapper {
-        flex: 1 0;
         display: flex;
         flex-direction: column;
         align-items: center;
         padding: 20px;
+        margin: 20px;
     }
 
     .day-icon {
-        width: 50px;
+        width: 100px;
+        margin-bottom: 15px;
+        flex: 1;
     }
 </style>

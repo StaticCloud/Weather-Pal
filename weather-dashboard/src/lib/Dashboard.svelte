@@ -1,6 +1,7 @@
 <script>
     import CurrentDayCard from "./dashboard/CurrentDayCard.svelte";
-    import WeeklyAndMetaWrapper from "./dashboard/WeeklyAndMetaWrapper.svelte";
+    import WeeklyWrapper from "./dashboard/WeeklyWrapper.svelte";
+    import MetaWrapper from "./dashboard/MetaWrapper.svelte";
     import Search from "./Search.svelte";
     
     export let data;
@@ -11,13 +12,16 @@
     <Search/>
     <div class="dashboard-wrap">
         <CurrentDayCard cityName={cityName} firstDay={data.daily[0]}/>
-        <WeeklyAndMetaWrapper days={data.daily}/>
+        <WeeklyWrapper days={data.daily}/>
+    </div>
+    <div class="meta-wrap">
+        <MetaWrapper day={data.daily[0]}/>
     </div>
 </div>
 
 <style>
     .dashboard {
-        min-width: 1098px;
+        min-width: 1020px;
     }
 
     .dashboard-wrap {
