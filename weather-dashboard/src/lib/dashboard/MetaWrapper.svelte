@@ -24,7 +24,6 @@
             <h4>Humidity</h4>
             <ProgressSvg maxVal=100 percent={day.humidity} color={getHumidColor(day.humidity)} units={"%"}/>
             <img src={humidity} alt="humidity">
-                
         </div>
         <div id="uvi">
             <h4>UVI</h4>
@@ -49,12 +48,12 @@
 
     .meta-wrapper {
         display: flex;
+        overflow-x: scroll;
         margin: 0 20px;
-        padding: 20px;
-        justify-content: space-around;
-
+        padding: 20px 0;
+        justify-content: space-between;
+        border-radius: 0 0 5px 5px;
         background-color: var(--dark-gray);
-        border-radius: 5px;
     }
 
     h4 {
@@ -63,5 +62,13 @@
 
     img {
         width: 15px;
+    }
+
+    @media screen and (min-width: 907px) {
+        .meta-wrapper {
+            padding: 20px;
+            justify-content: space-around;
+            border-radius: 5px;       
+        }
     }
 </style>

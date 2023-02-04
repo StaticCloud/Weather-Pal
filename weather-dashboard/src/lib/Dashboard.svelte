@@ -67,11 +67,25 @@
 
 <style>
     .dashboard {
-        min-width: 1020px;
+        display: flex;
+        height: 100%;
+        flex-direction: column;
     }
 
-    .dashboard-wrap {
-        width: 100%;
-        display: flex;
+    @media screen and (min-width: 907px) {
+        .dashboard-wrap {
+            width: 100%;
+            display: flex;
+        }
+
+        .dashboard {
+            height: auto;
+        }
+    }
+
+    @media screen and (min-width: 1185px) {
+        .dashboard {
+            min-width: 1020px;
+        }
     }
 </style>

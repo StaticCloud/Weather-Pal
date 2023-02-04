@@ -16,10 +16,16 @@
 }
 
 body {
-  background-color: var(--primary);
+  background-color: var(--secondary);
 }
 
 .card {
   background-color: var(--secondary);
+}
+
+@media screen and (min-width: 907px) {
+  body {
+    background-color: var(--primary);
+  }
 }
 

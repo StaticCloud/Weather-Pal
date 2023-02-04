@@ -31,11 +31,12 @@
 
     .day-wrapper {
         display: flex;
-        margin: 20px;
+        overflow-y: scroll;
+        margin: 0 20px;
         padding: 20px;
         justify-content: space-between;
         background-color: var(--dark-gray);
-        border-radius: 5px;
+        border-radius: 5px 5px 0 0;
     }
 
     .day-card {
@@ -56,6 +57,14 @@
         flex: 1 0;
         width: 15px;
         height: 15px;
+    }
+
+    @media screen and (min-width: 907px) {
+        .day-wrapper {
+            margin: 20px;
+            padding: 20px;
+            border-radius: 5px;
+        }
     }
 </style>
 

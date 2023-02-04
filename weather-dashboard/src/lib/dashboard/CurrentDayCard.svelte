@@ -30,6 +30,7 @@
         flex: 1 0;
         align-items: center;
         justify-content: center;
+        padding: 80px 0;
     }
 
     .date {
@@ -40,13 +41,26 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 20px;
         margin: 20px;
     }
 
     .day-icon {
-        width: 100px;
+        width: 150px;
         margin-bottom: 15px;
         flex: 1;
+    }
+
+    @media screen and (min-width: 907px) {
+        .current-day {
+            padding: 0px;
+        }
+
+        .block-wrapper {
+            padding: 20px;
+        }
+
+        .day-icon {
+            width: 100px;
+        }
     }
 </style>
