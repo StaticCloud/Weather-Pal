@@ -51,7 +51,9 @@
 </script>
  
 {#await promise}
-    <LoadingSpinner/>
+    <div class="spinner-wrap">
+        <LoadingSpinner/>
+    </div>
 {:then data}
     <div class="dashboard" in:fly={{ duration: 1000 }}>
         <Search bind:city={city}/>
@@ -70,6 +72,13 @@
         display: flex;
         height: 100%;
         flex-direction: column;
+    }
+
+    .spinner-wrap {
+        display: flex;
+        align-items: center;
+        height: 100vh;
+        justify-content: center;
     }
 
     @media screen and (min-width: 907px) {

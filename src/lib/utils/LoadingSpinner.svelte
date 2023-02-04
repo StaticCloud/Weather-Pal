@@ -12,7 +12,7 @@
     }
 
     .inner {
-        fill: var(--primary);
+        fill: var(--secondary);
     }
 
     .progress {

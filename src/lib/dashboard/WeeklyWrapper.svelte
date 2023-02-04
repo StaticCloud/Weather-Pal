@@ -48,9 +48,8 @@
     }
 
     .day-icons {
-        width: 50px;
+        width: 30px;
         margin:30px 10px;
-        
     }
 
     .meta-icon {
@@ -59,11 +58,24 @@
         height: 15px;
     }
 
+    .weekday-meta {
+        display: none;
+    }
+
     @media screen and (min-width: 907px) {
         .day-wrapper {
             margin: 20px;
             padding: 20px;
             border-radius: 5px;
+        }
+
+        .day-icons {
+            width: 50px;
+            margin:30px 10px;
+        }
+
+        .weekday-meta {
+            display: block;
         }
     }
 </style>

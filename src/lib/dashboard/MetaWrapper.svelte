@@ -4,6 +4,7 @@
     import humidity from '../../assets/weather-icons/humidity.svg'
 
     import ProgressSvg from "./ProgressSvg.svelte";
+    import ProgressSvgMini from './ProgressSvgMini.svelte';
     import { getWindColor, getTempColor, getHumidColor, getUVIColor } from "../utils/getMiscWeatherInfo";
     export let day;
 </script>
@@ -30,6 +31,27 @@
             <ProgressSvg maxVal=5 percent={day.uvi} color={getUVIColor(day.uvi)} units={""}/>
         </div>
     </div>
+    <div class="meta-mini">
+        <div>
+            <div id="wind">
+                <ProgressSvgMini maxVal=100 percent={day.wind_speed} color={getWindColor(day.wind_speed)} units={" mph"}/>
+                <img src={wind} alt="wind">
+            </div>
+            <div id="temp">
+                <ProgressSvgMini maxVal=100 percent={day.temp.max} color={getTempColor(day.temp.max)} units={"°F"}/>
+                <img src={temp} alt="temp">
+            </div>
+        </div>
+        <div>
+            <div id="humidity">
+                <ProgressSvgMini maxVal=100 percent={day.humidity} color={getHumidColor(day.humidity)} units={"%"}/>
+                <img src={humidity} alt="humidity">
+            </div>
+            <div id="uvi">
+                <ProgressSvgMini maxVal=5 percent={day.uvi} color={getUVIColor(day.uvi)} units={""}/>
+            </div>
+        </div>
+    </div>
 </div>
 
 <style>
@@ -40,20 +62,30 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding-bottom: 50px;
     }
 
     .meta-card {
         padding-bottom: 20px;
     }
 
-    .meta-wrapper {
-        display: flex;
+    .meta-wrapper,
+    .meta-mini {
         overflow-x: scroll;
         margin: 0 20px;
-        padding: 20px 0;
-        justify-content: space-between;
+        padding: 0 20px 20px 20px;
         border-radius: 0 0 5px 5px;
         background-color: var(--dark-gray);
+    }
+
+    .meta-wrapper {
+        display: none;
+        justify-content: space-between;
+    }
+
+    .meta-mini {
+        display: flex;
+        justify-content: space-around;
     }
 
     h4 {
@@ -66,9 +98,14 @@
 
     @media screen and (min-width: 907px) {
         .meta-wrapper {
+            display: flex;
             padding: 20px;
             justify-content: space-around;
             border-radius: 5px;       
+        }
+
+        .meta-mini {
+            display: none;
         }
     }
 </style>
