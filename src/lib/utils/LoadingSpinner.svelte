@@ -33,4 +33,10 @@
             transform: rotate(360deg)
         }
     }
+
+    @media screen and (min-width: 907px) {
+        .inner {
+            fill: var(--primary)
+        }
+    }
 </style>

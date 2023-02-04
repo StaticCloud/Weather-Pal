@@ -49,6 +49,7 @@
             </div>
             <div id="uvi">
                 <ProgressSvgMini maxVal=5 percent={day.uvi} color={getUVIColor(day.uvi)} units={""}/>
+                <h5>UVI</h5>
             </div>
         </div>
     </div>
@@ -92,6 +93,11 @@
         padding-top: 7px;
     }
 
+    img, h5 {
+        
+        margin-top: 10px;
+    }
+
     img {
         width: 15px;
     }
@@ -106,6 +112,20 @@
 
         .meta-mini {
             display: none;
+        }
+
+        #wind,
+        #temp,
+        #humidity,
+        #uvi {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 0px;
+        }
+
+        img, h5 {
+            margin-top: 0px;
         }
     }
 </style>

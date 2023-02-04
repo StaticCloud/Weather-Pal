@@ -71,7 +71,6 @@ export const getHumidColor = (humdity) => {
 }
 
 export const getUVIColor = (uvi) => {
-    console.log(uvi)
     if (uvi < 2) {
         return "#49C286";
     } else if (uvi > 5) {

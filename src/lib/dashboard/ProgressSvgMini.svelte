@@ -4,7 +4,13 @@
     export let color;
     export let units;
 
-    const finalPercent = (314 - (314 * percent) / maxVal);
+    let finalPercent;
+
+    if (percent >= maxVal) {
+        finalPercent = maxVal;
+    } else {
+        finalPercent = (318 - (318 * percent) / maxVal);
+    }
 </script>
 
 <div class="progress-wrap">
@@ -52,8 +58,8 @@
         fill: var(--darker-gray);
         stroke: var(--color);
         stroke-width: 20px;
-        stroke-dasharray: 314;
-        stroke-dashoffset: 314;
+        stroke-dasharray: 318;
+        stroke-dashoffset: 318;
         animation: animateCircle 1.5s ease-out forwards;
     }
 
