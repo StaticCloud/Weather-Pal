@@ -1,16 +1,22 @@
 {
   "name": "weather-dashboard",
+  "homepage": "https://staticcloud.github.io/Weather-Dashboard/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.0.2",
     "svelte": "^3.55.1",
     "vite": "^4.1.0"
+  },
+  "dependencies": {
+    "gh-pages": "^5.0.0"
   }
 }
