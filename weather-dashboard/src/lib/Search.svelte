@@ -1,13 +1,19 @@
 <script>
     import search from '../assets/magnifying-glass-solid.svg'
+    export let city;
+    let query = "";
+
+    function setCity() {
+        city = query
+    }
 </script>
 
-<div class="search-wrap">
-    <input class="search" type="text" placeholder="Search for a city..."/>
-    <button>
+<form class="search-wrap" on:submit|preventDefault={() => setCity()}>
+    <input bind:value={query} class="search" type="text" placeholder="Search for a city..."/>
+    <button type="submit">
         <img src={search} alt="glass">
     </button>
-</div>
+</form>
 
 <style>
     .search-wrap {

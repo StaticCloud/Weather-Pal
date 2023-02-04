@@ -6,7 +6,6 @@
     
     export let days;
     let forecast = days.slice(1, days.length - 2)
-    console.log(forecast)
 </script>
 
 <div class="weekly card">

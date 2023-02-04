@@ -20,6 +20,11 @@
 </div>
 
 <style>
+
+    h1 {
+        text-align: center;
+    }
+
     .current-day {
         display: flex;
         flex: 1 0;
