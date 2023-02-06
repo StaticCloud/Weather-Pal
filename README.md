@@ -19,7 +19,7 @@
 </p>
 
 <h1>Deployed Page 🏡</h1>
-<h2><a href="https://staticcloud.github.io/Weather-Pal/">Check out the app here!</a></h2>
+<p><a href="https://staticcloud.github.io/Weather-Pal/">Check out the app here!</a></p>
 
 <h1>License ⚖️</h1>
 
