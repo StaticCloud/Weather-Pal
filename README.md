@@ -1,9 +1,9 @@
 <div>
-<h1>Weather Dashboard ☀️</h1>
+<h1>Weather Pal ☀️</h1>
 
-<img src="https://img.shields.io/github/license/StaticCloud/Weather-Dashboard?color=blue&style=for-the-badge"/>
-<img src="https://img.shields.io/github/languages/top/StaticCloud/Weather-Dashboard?color=red&logo=svelte&style=for-the-badge"/>
-<img src="https://img.shields.io/github/last-commit/StaticCloud/Weather-Dashboard?style=for-the-badge"/>
+<img src="https://img.shields.io/github/license/StaticCloud/Weather-Pal?color=blue&style=for-the-badge"/>
+<img src="https://img.shields.io/github/languages/top/StaticCloud/Weather-Pal?color=red&logo=svelte&style=for-the-badge"/>
+<img src="https://img.shields.io/github/last-commit/StaticCloud/Weather-Pal?style=for-the-badge"/>
 
 <h1>Tech Stack 💻</h1>
 <img src="https://img.shields.io/badge/Svelte-FF3E00.svg?style=for-the-badge&logo=svelte&logoColor=white">
@@ -14,8 +14,12 @@
 
 <h1>About 📖</h1>
 <img src="readme-prev.png"/>
-<br/><br/>
-<p>A simple SPA (single-page application) that uses the OpenWeatherMap API for fetching weather data and uses Svelte for displaying the data. Users can view weather data for cities which includes the current day and 5-day forecast. Aside from the current weather, the use can also view data such as UVI (UV Index), the temperature, the wind speed, and the humidity.</p>
+<p>
+<h3>Weather Pal is a simplified weather dashboard.</h3> Weather Pal uses the OpenWeatherMap API for fetching weather data and uses Svelte for displaying the data. Users can view weather data for cities which includes the current day and 5-day forecast. Aside from the current weather, the use can also view data such as UVI (UV Index), the temperature, the wind speed, and the humidity.
+</p>
+
+<h1>Deployed Page 🏡</h1>
+<h2><a href="https://staticcloud.github.io/Weather-Pal/">Check out the app here!</a></h2>
 
 <h1>License ⚖️</h1>
 

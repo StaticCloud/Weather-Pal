@@ -57,6 +57,8 @@
 
         .block-wrapper {
             padding: 20px;
+            padding-right: 0px;
+            margin-right: 0px;
         }
 
         .day-icon {
